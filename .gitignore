@@ -108,3 +108,7 @@ backend*.log
 *.bak
 *.backup
 *.old
+
+# Documentation (keep only main README)
+docs/
+README_EXTENSION.md
