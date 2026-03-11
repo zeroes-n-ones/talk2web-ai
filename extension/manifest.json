@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Talk2Web AI",
+  "version": "1.0.0",
+  "description": "Voice-powered AI assistant for web content interaction",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["content-extractor.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "../frontend/index.html",
+    "default_title": "Talk2Web AI"
+  },
+  "icons": {
+    "16": "../frontend/public/icons/icon16.png",
+    "32": "../frontend/public/icons/icon32.png",
+    "48": "../frontend/public/icons/icon48.png",
+    "128": "../frontend/public/icons/icon128.png"
+  }
+}

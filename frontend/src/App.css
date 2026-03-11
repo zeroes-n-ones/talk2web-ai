@@ -1,0 +1,153 @@
+.app {
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  background: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 18px;
+  color: #666;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.app-header h1 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.app-header p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.app-main {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.content-section,
+.query-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.content-section h2,
+.query-section h2 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.extract-btn,
+.query-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.extract-btn:hover,
+.query-btn:hover {
+  background: #0056b3;
+}
+
+.extract-btn:disabled,
+.query-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.content-preview {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #007bff;
+}
+
+.content-preview h3 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+.content-preview p {
+  margin: 0 0 8px 0;
+  color: #495057;
+  line-height: 1.5;
+}
+
+.content-preview small {
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.query-input {
+  margin-bottom: 15px;
+}
+
+.query-input textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.query-input textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.query-input textarea:disabled {
+  background: #f8f9fa;
+  color: #6c757d;
+}
+
+.ai-response {
+  margin-top: 20px;
+  padding: 15px;
+  background: #d4edda;
+  border-radius: 6px;
+  border-left: 4px solid #28a745;
+}
+
+.ai-response h3 {
+  margin: 0 0 10px 0;
+  color: #155724;
+  font-size: 16px;
+}
+
+.ai-response p {
+  margin: 0;
+  color: #155724;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}

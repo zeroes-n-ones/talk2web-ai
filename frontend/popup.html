@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk2Web AI</title>
+    <style>
+        body {
+            width: 380px;
+            height: 500px;
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            overflow-y: auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 12px;
+        }
+        
+        .btn:hover {
+            background: #5a6fd8;
+        }
+        
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .voice-btn {
+            background: #4CAF50;
+        }
+        
+        .voice-btn.listening {
+            background: #f44336;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 12px;
+            resize: vertical;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+        
+        .response {
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        .status {
+            font-size: 10px;
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+        
+        .error-message {
+            background: #f44336;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 5px 0;
+            font-size: 11px;
+        }
+        
+        h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .mic-container {
+          display: flex;
+          justify-content: center;
+          margin: 20px 0;
+        }
+        
+        .mic-orb {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #4f46e5, #1e1b4b);
+          position: relative;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .mic-orb.listening {
+          animation: pulse 1s infinite;
+          box-shadow: 0 0 25px #6366f1;
+        }
+        
+        .mic-orb.processing {
+          animation: pulse 2s infinite;
+          box-shadow: 0 0 20px #22c55e;
+        }
+        
+        .eye {
+          width: 12px;
+          height: 12px;
+          background: white;
+          border-radius: 50%;
+          position: absolute;
+          top: 35px;
+        }
+        
+        .eye.left {
+          left: 25px;
+        }
+        
+        .eye.right {
+          right: 25px;
+        }
+        
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.08); }
+          100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Talk2Web AI</h1>
+        <p>Voice-powered web content interaction</p>
+    </div>
+    
+    <div class="section">
+        <h3>Article Content</h3>
+        <button class="btn" id="extractBtn">Extract Article</button>
+        <div id="articleStatus" class="status">Click to extract content from current page</div>
+    </div>
+    
+    <div class="section">
+        <h3>Ask AI</h3>
+        <div class="mic-container">
+          <div id="micOrb" class="mic-orb">
+              <div class="eye left"></div>
+              <div class="eye right"></div>
+          </div>
+        </div>
+        <textarea id="queryInput" placeholder="Type your question here (e.g., 'summarize this article')..."></textarea>
+        <button class="btn" id="sendBtn">Ask AI</button>
+        <div id="response" class="response" style="display:none;"></div>
+    </div>
+    
+    <div class="section">
+        <h3>Voice Status</h3>
+        <div id="voiceStatus">Checking voice APIs...</div>
+        <div style="font-size: 10px; color: #666; margin-top: 10px;">
+            💡 <strong>Tip:</strong> If voice doesn't work, you can still type questions manually!
+        </div>
+    </div>
+
+    <!-- External script - CSP compliant -->
+    <script src="popup.js"></script>
+</body>
+</html>
